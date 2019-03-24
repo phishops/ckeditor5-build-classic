@@ -27,6 +27,9 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import BackgroundColor from 'ckeditor5-background-color/src/backgroundcolor';
+import ForegroundColor from 'ckeditor5-foreground-color/src/foregroundcolor';
+import MergeFields from './mergefield';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -52,13 +55,17 @@ ClassicEditor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+	BackgroundColor,
+	ForegroundColor,
+	MergeFields
 ];
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
 	toolbar: {
 		items: [
+			'mergeFields',
 			'heading',
 			'|',
 			'bold',
@@ -71,7 +78,9 @@ ClassicEditor.defaultConfig = {
 			'insertTable',
 			'mediaEmbed',
 			'undo',
-			'redo'
+			'redo',
+			'foregroundcolor',
+			'backgroundcolor'
 		]
 	},
 	image: {
@@ -90,5 +99,13 @@ ClassicEditor.defaultConfig = {
 		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'en',
+	mergeFields: {
+		options: [
+			{
+				displayValue: 'First Name',
+				name: 'firstName'
+			}
+		]
+	}
 };
