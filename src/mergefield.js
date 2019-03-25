@@ -54,9 +54,7 @@ class MergeFields extends Plugin {
 			this.listenTo( buttonView, 'execute', () => {
 				editor.model.change( writer => {
 					const insertPosition = editor.model.document.selection.getLastPosition();
-					writer.insertText( '[' + option.name + ']', {
-						bold: true
-					}, insertPosition );
+					writer.insertText( '[[' + option.name + ']]', {}, insertPosition );
 				} );
 				editor.editing.view.focus();
 			} );
